@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inspect-evals-mcptox"
+version = "1.0.0"
+description = "MCPTox: a Tool Poisoning Attack benchmark for LLM agents, as an Inspect AI evaluation"
+authors = [{ name = "Stefano Amorelli" }]
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "inspect_ai>=0.3.158",
+    "requests>=2.28",
+    "backoff>=2.0",
+    "platformdirs>=3.0",
+]
+
+[project.urls]
+"Source Code" = "https://github.com/stefanoamorelli/inspect-evals-mcptox"
+"Issue Tracker" = "https://github.com/stefanoamorelli/inspect-evals-mcptox/issues"
+"Paper" = "https://arxiv.org/abs/2508.14925"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+    "mypy",
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+    "types-requests",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-rA --color=yes"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "dataset_download: tests that download the dataset (need network)",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
