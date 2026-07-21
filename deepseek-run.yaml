@@ -1,0 +1,4 @@
+model: openai/deepseek-chat
+model_base_url: https://api.deepseek.com
+generate_config:
+  max_tokens: 2048
